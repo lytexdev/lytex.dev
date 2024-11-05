@@ -19,16 +19,25 @@ def index():
 
 @app.route('/<path:subpath>')
 def show_article(subpath):
+    metadata = load_metadata()
+    article = next((item for item in metadata if item["filepath"] == subpath), None)
+    
+    if not article:
+        return abort(404)
+    
     md_path = os.path.join(ARTICLES_PATH, f"{subpath}.md")
     if not os.path.exists(md_path):
         return abort(404)
-    
+
     with open(md_path, 'r') as f:
         content = f.read()
         html_content = markdown(content)
     
-    return render_template('article.html', content=html_content)
+    return render_template('article.html', title=article['title'], content=html_content)
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    try:
+        app.run(debug=True, host='0.0.0.0', port=8999)
+    except Exception as e:
+        app.logger.error(f"An error occurred: {e}")

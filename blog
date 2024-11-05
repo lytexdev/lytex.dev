@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import json
+from datetime import datetime
+import shutil
+
+ARTICLES_PATH = './articles'
+METADATA_PATH = './data/articles.json'
+
+def load_metadata():
+    if os.path.exists(METADATA_PATH):
+        with open(METADATA_PATH, 'r') as f:
+            return json.load(f)
+    else:
+        return []
+
+def save_metadata(metadata):
+    with open(METADATA_PATH, 'w') as f:
+        json.dump(metadata, f, indent=2)
+
+def add_article(title, article_path, markdown_path):
+    full_article_path = os.path.join(ARTICLES_PATH, article_path)
+    os.makedirs(os.path.dirname(full_article_path), exist_ok=True)
+    shutil.copyfile(markdown_path, f"{full_article_path}.md")
+
+    metadata = load_metadata()
+    new_article = {
+        "id": len(metadata) + 1,
+        "title": title,
+        "filepath": article_path,
+        "created_at": datetime.now().strftime('%Y-%m-%d')
+    }
+    metadata.append(new_article)
+    save_metadata(metadata)
+    print(f"Article '{title}' has been added successfully with ID {new_article['id']}.")
+
+def delete_article(article_id):
+    metadata = load_metadata()
+    article = next((item for item in metadata if item["id"] == article_id), None)
+    
+    if not article:
+        print(f"No article found with ID {article_id}.")
+        return
+
+    confirm = input(f"Are you sure you want to delete the article '{article['title']}'? (y/N): ")
+    if confirm.lower() != 'y':
+        print("Deletion cancelled.")
+        return
+
+    full_article_path = os.path.join(ARTICLES_PATH, f"{article['filepath']}.md")
+    if os.path.exists(full_article_path):
+        os.remove(full_article_path)
+
+    metadata = [item for item in metadata if item["id"] != article_id]
+    save_metadata(metadata)
+    print(f"Article '{article['title']}' with ID {article_id} has been deleted.")
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: ./lytexblog add \"Title\" \"Article Path/Chapter\" \"Markdown Path\"")
+        print("       ./lytexblog delete <id>")
+        sys.exit(1)
+
+    command = sys.argv[1]
+
+    if command == "add" and len(sys.argv) == 5:
+        title = sys.argv[2]
+        article_path = sys.argv[3]
+        markdown_path = sys.argv[4]
+        
+        if not os.path.exists(markdown_path):
+            print(f"Error: Markdown file '{markdown_path}' not found.")
+            sys.exit(1)
+        
+        add_article(title, article_path, markdown_path)
+    
+    elif command == "delete" and len(sys.argv) == 3:
+        try:
+            article_id = int(sys.argv[2])
+        except ValueError:
+            print("Error: ID must be an integer.")
+            sys.exit(1)
+        
+        delete_article(article_id)
+    
+    else:
+        print("Invalid command or arguments.")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()

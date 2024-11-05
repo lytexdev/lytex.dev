@@ -11,8 +11,14 @@
 </head>
 
 <body>
-    <h1>{{ title }}</h1>
-    <div>{{ content|safe }}</div>
+    <section class="article-head">
+        <h1>{{ title }}</h1>
+        <time>{{ created_at }}</time>
+    </section>
+
+    <section class="article-content">
+        {{ content|safe }}
+    </section>
 </body>
 
 </html>
