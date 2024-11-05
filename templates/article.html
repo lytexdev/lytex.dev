@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='default.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='atom-one-dark.min.css') }}">
-    <script src="{{ url_for('static', filename='highlight.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='highlight.min.js') }}"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             hljs.highlightAll();
@@ -17,6 +17,16 @@
 </head>
 
 <body>
+    <nav class="navigation-buttons">
+        <a href="{{ url_for('index') }}" class="button">Back to Index</a>
+        {% if prev_article %}
+        <a href="{{ url_for('show_article', subpath=prev_article.filepath) }}" class="button">Previous Article</a>
+        {% endif %}
+        {% if next_article %}
+        <a href="{{ url_for('show_article', subpath=next_article.filepath) }}" class="button">Next Article</a>
+        {% endif %}
+    </nav>
+
     <section class="article-head">
         <h1>{{ title }}</h1>
         <time>{{ created_at }}</time>
