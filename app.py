@@ -31,7 +31,7 @@ def show_article(subpath):
 
     with open(md_path, 'r') as f:
         content = f.read()
-        html_content = markdown(content)
+        html_content = markdown(content, extras=['fenced-code-blocks'])
     
     return render_template('article.html', title=article['title'], content=html_content)
 
