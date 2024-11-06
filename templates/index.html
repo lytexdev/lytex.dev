@@ -9,13 +9,13 @@
 </head>
 
 <body>
-    <h1>Blog</h1>
+    <h1>lytex Blog</h1>
 
     <ul>
         {% for article in articles %}
         <li>
             <a href="{{ url_for('show_article', subpath=article.filepath) }}">
-                <span class="article-title">{{ article.title }}</span> - <time>{{ article.created_at }}</time>
+                <span class="article-title">{{ article.title }}</span> <time>- {{ article.created_at }}</time>
             </a>
         </li>
         {% endfor %}
