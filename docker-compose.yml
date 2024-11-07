@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8999:8999"
+    volumes:
+      - ./:/app
+    restart: "unless-stopped"

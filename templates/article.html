@@ -23,19 +23,19 @@
     </header>
 
     <nav class="navigation-buttons">
-        <a href="{{ url_for('index') }}" class="button">Back to Index</a>
+        <a href="{{ url_for('index') }}" class="button">Start</a>
         {% if prev_article %}
-        <a href="{{ url_for('show_article', subpath=prev_article.filepath) }}" class="button">Previous Article</a>
+        <a href="{{ url_for('show_article', subpath=prev_article.filepath) }}" class="button">Letzer Artikel</a>
         {% endif %}
         {% if next_article %}
-        <a href="{{ url_for('show_article', subpath=next_article.filepath) }}" class="button">Next Article</a>
+        <a href="{{ url_for('show_article', subpath=next_article.filepath) }}" class="button">Nächster Artikel</a>
         {% endif %}
     </nav>
 
     <section class="article-head">
         <b>{{ title }}</b>
         <time>{{ created_at }}</time>
-        <span class="article-authors">by {{ authors }}</span>
+        <span class="article-authors">von {{ authors }}</span>
     </section>
 
     <section class="article-content">
