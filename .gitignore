@@ -19,8 +19,6 @@ instance/
 *.sqlite-journal
 *.sqlite3
 *.db
-articles/
-data/
 
 # IDE and editor files
 .vscode/

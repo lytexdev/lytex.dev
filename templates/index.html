@@ -1,25 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    <title>lytex Blog</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='lytex.svg') }}" type="image/svg">
+    <meta http-equiv="onion-location" content="http://sad4k54yg2gevlhel3sdtaw2wbreqlkbfsueihjpoxcas2o73ne5kbad.onion">
+    <title>lytex</title>
+
+    <style>
+        @font-face {
+            font-family: 'Ubuntu Sans';
+            src: url('{{ url_for("static", filename="fonts/UbuntuSans-VariableFont_wdth,wght.ttf") }}') format('truetype');
+        }
+    </style>
 </head>
-
 <body>
-    <h1>lytex Blog</h1>
-
-    <ul>
-        {% for article in articles %}
-        <li>
-            <a href="{{ url_for('show_article', subpath=article.filepath) }}">
-                <span class="article-title">{{ article.title }}</span> <time>- {{ article.created_at }}</time>
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <header class="header-main">
+            <h1>lytex</h1>
+            <b>We love privacy ;)</b>
+        </header>
+        
+        <section class="public-services">
+            <h2>Public Services</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <a href="https://lytex.dev" target="_blank">lytex.dev</a> -
+                    <a class="tor-version-link" href="http://sad4k54yg2gevlhel3sdtaw2wbreqlkbfsueihjpoxcas2o73ne5kbad.onion"
+                        target="_blank">Onion Link</a>
+                </div>
+                <div class="service-item">
+                    <a href="https://yt.lytex.dev" target="_blank">Invidious</a> -
+                    <a class="tor-version-link" href="http://syahr2bukkjewdnchbfq62eiudb452ouoj62wnlkvlxxu7o375zgbcad.onion"
+                        target="_blank">Onion Link</a>
+                    <p>(Privacy respecting YouTube frontend)</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="article-list">
+            <h2>Latest Articles
+                <svg viewBox="0 0 36 36" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet" fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path fill="#FFCD05" d="M0 27a4 4 0 0 0 4 4h28a4 4 0 0 0 4-4v-4H0v4z"></path>
+                        <path fill="#ED1F24" d="M0 14h36v9H0z"></path>
+                        <path fill="#141414" d="M32 5H4a4 4 0 0 0-4 4v5h36V9a4 4 0 0 0-4-4z"></path>
+                    </g>
+                </svg>
+            </h2>
+            <div class="article-cards">
+                {% for article in articles %}
+                <div class="article-card">
+                    <a href="{{ url_for('show_article', subpath=article.filepath) }}">
+                        <h3>{{ article.title }}</h3>
+                        <p class="article-date">Published on {{ article.created_at }}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        
+        <section class="donations">
+            <h2>Support <3</h2>
+            <div class="donation-list">
+                <div class="donation-item">
+                    <h4 style="color:#ff5e00;">Monero(XMR):</h4>
+                    <p>8B4Voj8bQtf3Fv2fmKbnwMbLemBcwQu9GTxwtR8o9tgnHk9uPfvvMsQ4P4KHD5AgkQ2W4LvE8kY9MGSX7rvGk9xMMtey82y</p>
+                </div>
+            </div>
+            <br>
+            <div class="contact">
+                <a href="mailto:immanuel@lytex.dev" target="_blank">Email: immanuel@lytex.dev</a>
+                <a href="https://t.me/llytexx" target="_blank">Telegram: llytexx</a>
+                <a href="#discord:_lytex_">Discord: _lytex_</a>
+            </div>
+        </section>
+    </div>
 </body>
-
 </html>

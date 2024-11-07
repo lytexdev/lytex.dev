@@ -1,1 +1,1 @@
-# Simple Blog
+# lytex.dev

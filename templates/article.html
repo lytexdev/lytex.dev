@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='article.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='default.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='atom-one-dark.min.css') }}">
     <script src="{{ url_for('static', filename='highlight.min.js') }}"></script>
@@ -17,6 +18,10 @@
 </head>
 
 <body>
+    <header class="header-main">
+        <h1>lytex Blog</h1>
+    </header>
+
     <nav class="navigation-buttons">
         <a href="{{ url_for('index') }}" class="button">Back to Index</a>
         {% if prev_article %}
@@ -30,6 +35,7 @@
     <section class="article-head">
         <b>{{ title }}</b>
         <time>{{ created_at }}</time>
+        <span class="article-authors">by {{ authors }}</span>
     </section>
 
     <section class="article-content">

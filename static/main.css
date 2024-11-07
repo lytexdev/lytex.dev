@@ -2,94 +2,199 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Ubuntu Sans', sans-serif;
 }
 
 body {
-    background-color: #121212;
+    background: #0a0a0a;
     color: #e0e0e0;
+}
+
+.container {
+    max-width: 1200px;
     line-height: 1.6;
     padding: 20px;
-    max-width: 860px;
     margin: auto;
+    overflow-x: hidden;
 }
 
-h1 {
-    font-size: 2.5em;
-    color: #f53b3b;
-    margin-bottom: 0.5em;
+.header-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
+    gap: 1.5rem;
 }
 
-time {
+.header-main h1 {
+    font-size: 36px;
+    color: #ff1b1b;
+}
+
+.header-main b {
+    color: #dddddd;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.public-services {
+    text-align: center;
+    margin-bottom: 7rem;
+}
+
+.public-services h2 {
+    font-size: 2em;
+    color: #fa3131;
+    margin-bottom: 20px;
+}
+
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.service-item {
+    text-align: center;
+    width: 333px;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.service-item a {
+    color: #dd0e0e;
+    text-shadow: 0 0 5px #e80000;
+    text-decoration: none;
+}
+
+.service-item .tor-version-link {
+    color: #c00ef7;
+}
+
+.service-item .tor-version-link:hover {
+    color: #d756ff;
+}
+
+.service-item a:hover {
+    color: #ff6666;
+}
+
+.article-list {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    padding-top: 30px;
+    border-top: 2px solid #971e1e;
+}
+
+.article-list h2 {
+    font-size: 2em;
+    color: #fa3131;
+    margin-bottom: 20px;
+}
+
+.article-cards {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.article-card {
+    background-color: #181818;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 0 10px #f53b3b;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    background-color: #292929;
+}
+
+.article-card h3 {
+    font-size: 1.5em;
+    color: #ececec;
+    margin-bottom: 10px;
+}
+
+.article-card a {
+    text-decoration: none;
+}
+
+.article-date {
     font-size: 0.9em;
     color: #b3b3b3;
 }
 
-a {
+.donations {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 50px;
+    border-top: 2px solid #754141;
+}
+
+.donations h2 {
+    font-size: 2em;
     color: #ff4d4d;
-    text-decoration: none;
+    margin-bottom: 20px;
 }
 
-a:hover {
-    color: #da4b4b;
+.donations p {
+    color: #b3b3b3;
+    margin-bottom: 20px;
 }
 
-.navigation-buttons {
+.donation-list {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.article-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 2px solid #ff4d4d;
-    padding-bottom: 10px;
-    margin: 2rem 0;
+.donation-item {
+    text-align: center;
 }
 
-.article-content {
-    margin-top: 20px;
-    line-height: 1.8;
-}
-
-.article-content h2 {
-    font-size: 1.8em;
-    color: #ff4d4d;
-    margin-top: 20px;
-}
-
-.article-content p {
-    margin-bottom: 1.2em;
-}
-
-pre {
-    border-radius: 5px;
-    overflow-x: auto;
-    color: #ffcccc;
-    font-size: 0.95em;
-}
-
-ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-top: 20px;
-}
-
-li {
+.donation-item h4 {
     margin-bottom: 10px;
 }
 
-.article-title {
+.donation-item p {
+    color: #e0e0e0;
+    font-family: monospace;
+    background-color: #1b1b1b;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.contact {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contact a {
+    color: #b6b6b6;
     font-weight: bold;
+    font-size: 1.2em;
+    text-decoration: none;
 }
 
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
+    .container {
+        padding: 5px
     }
 
-    h1 {
-        font-size: 2em;
+    .header-main h1 {
+        font-size: 2.5em;
+    }
+
+    .public-services,
+    .article-list,
+    .donations {
+        margin-bottom: 40px;
     }
 }

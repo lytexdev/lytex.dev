@@ -20,7 +20,7 @@ def save_metadata(metadata):
     with open(METADATA_PATH, 'w') as f:
         json.dump(metadata, f, indent=2)
 
-def add_article(title, article_path, markdown_path):
+def add_article(title, article_path, markdown_path, authors="lytex"):
     full_article_path = os.path.join(ARTICLES_PATH, article_path)
     os.makedirs(os.path.dirname(full_article_path), exist_ok=True)
     shutil.copyfile(markdown_path, f"{full_article_path}.md")
@@ -30,11 +30,12 @@ def add_article(title, article_path, markdown_path):
         "id": len(metadata) + 1,
         "title": title,
         "filepath": article_path,
-        "created_at": datetime.now().strftime('%Y-%m-%d')
+        "created_at": datetime.now().strftime('%Y-%m-%d'),
+        "authors": authors
     }
     metadata.append(new_article)
     save_metadata(metadata)
-    print(f"Article '{title}' has been added successfully with ID {new_article['id']}.")
+    print(f"Article '{title}' has been added successfully with ID {new_article['id']} and authors '{authors}'.")
 
 def delete_article(article_id):
     metadata = load_metadata()
@@ -59,22 +60,23 @@ def delete_article(article_id):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: ./lytexblog add \"Title\" \"Article Path/Chapter\" \"Markdown Path\"")
-        print("       ./lytexblog delete <id>")
+        print("Usage: ./blog add \"Title\" \"Chapter/ArticleName\" \"Markdown Path\" [\"Author1, Author2, ...\"]")
+        print("       ./blog delete <id>")
         sys.exit(1)
 
     command = sys.argv[1]
 
-    if command == "add" and len(sys.argv) == 5:
+    if command == "add" and len(sys.argv) >= 5:
         title = sys.argv[2]
         article_path = sys.argv[3]
         markdown_path = sys.argv[4]
+        authors = sys.argv[5] if len(sys.argv) > 5 else "lytex"
         
         if not os.path.exists(markdown_path):
             print(f"Error: Markdown file '{markdown_path}' not found.")
             sys.exit(1)
         
-        add_article(title, article_path, markdown_path)
+        add_article(title, article_path, markdown_path, authors)
     
     elif command == "delete" and len(sys.argv) == 3:
         try:

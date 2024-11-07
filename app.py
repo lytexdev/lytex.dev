@@ -27,12 +27,15 @@ def show_article(subpath):
 
     article = metadata[article_index]
     md_path = os.path.join(ARTICLES_PATH, f"{subpath}.md")
+    
     if not os.path.exists(md_path):
         return abort(404)
 
     with open(md_path, 'r') as f:
         content = f.read()
         html_content = markdown(content, extras=['fenced-code-blocks'])
+        
+    authors = article.get('authors', 'lytex')
 
     prev_article = metadata[article_index - 1] if article_index > 0 else None
     next_article = metadata[article_index + 1] if article_index < len(metadata) - 1 else None
@@ -42,6 +45,7 @@ def show_article(subpath):
         title=article['title'],
         content=html_content,
         created_at=article['created_at'],
+        authors=authors,
         prev_article=prev_article,
         next_article=next_article
     )
