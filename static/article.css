@@ -48,8 +48,9 @@ body {
 }
 
 .article-authors {
-    color: #e0e0e0;
+    color: #f4f4f4;
     font-weight: bold;
+    font-size: 18px;
 }
 
 .article-content {
