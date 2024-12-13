@@ -4,23 +4,6 @@ Ein Linux-Server ist eine leistungsstarke Basis für Webanwendungen, Datenbanken
 
 ---
 
-## Inhaltsverzeichnis
-1. [Initiale Servereinrichtung](#initiale-servereinrichtung)
-   - [Zugang per SSH einrichten](#zugang-per-ssh-einrichten)
-   - [System-Updates installieren](#system-updates-installieren)
-2. [Benutzer- und Rechteverwaltung](#benutzer-und-rechteverwaltung)
-   - [Root-Login deaktivieren](#root-login-deaktivieren)
-   - [Benutzer mit eingeschränkten Rechten anlegen](#benutzer-mit-eingeschränkten-rechten-anlegen)
-3. [Firewall und Netzwerkabsicherung](#firewall-und-netzwerkabsicherung)
-   - [Firewall mit UFW konfigurieren](#firewall-mit-ufw-konfigurieren)
-4. [Intrusion Detection und Monitoring](#intrusion-detection-und-monitoring)
-   - [Fail2Ban installieren und konfigurieren](#fail2ban-installieren-und-konfigurieren)
-   - [Logfiles regelmäßig überwachen](#logfiles-regelmäßig-überwachen)
-6. [Automatische Backups einrichten](#automatische-backups-einrichten)
-7. [Zusätzliche Tipps und Tools](#zusätzliche-tipps-und-tools)
-
----
-
 ## Initiale Servereinrichtung
 
 ### Zugang per SSH einrichten
@@ -202,6 +185,7 @@ Sichere regelmäßig deine Daten.
    ```
    0 2 * * * /pfad/zum/backup-script.sh
    ```
+3. **Unser remote backup script**: [Gitea Repository](https://git.lytex.dev/lytex/remote-backup)
 
 ---
 
