@@ -1,6 +1,6 @@
 # Linux-Server Absichern
 
-Ein Linux-Server ist eine leistungsstarke Basis für Webanwendungen, Datenbanken, Backups oder andere Dienste. Doch ohne die richtige Konfiguration kann er schnell zum Ziel von Angriffen werden. In diesem Post wird erklärt, wie man einen Linux-Server (in dem Fall Ubuntu) sicher einrichtet.
+Ein Linux-Server ist eine leistungsstarke Basis fuer Webanwendungen, Datenbanken, Backups oder andere Dienste. Doch ohne die richtige Konfiguration kann er schnell zum Ziel von Angriffen werden. In diesem Post wird erklaert, wie man einen Linux-Server (in dem Fall Ubuntu) sicher einrichtet.
 
 ---
 
@@ -13,7 +13,7 @@ SSH ist der sicherste Weg, um auf deinen Server zuzugreifen.
    ```bash
    ssh-keygen -t ed25519 -C "email@example.com"
    ```
-   Der private Schlüssel bleibt auf deinem Computer, der öffentliche Schlüssel wird auf dem Server hinterlegt in der `authorized_keys` Datei gespeichert.
+   Der private Schluessel bleibt auf deinem Computer, der oeffentliche Schluessel wird auf dem Server hinterlegt in der `authorized_keys` Datei gespeichert.
 
 2. **SSH-Key auf den Server kopieren**:
    ```bash
@@ -21,11 +21,11 @@ SSH ist der sicherste Weg, um auf deinen Server zuzugreifen.
    ```
 
 3. **Passwortauthentifizierung deaktivieren**:
-   Öffne die SSH-Konfigurationsdatei:
+   oeffne die SSH-Konfigurationsdatei:
    ```bash
    sudo nano /etc/ssh/sshd_config
    ```
-   Ändere folgende Parameter:
+   aendere folgende Parameter:
    ```
    PasswordAuthentication no
    PermitRootLogin no
@@ -37,7 +37,7 @@ SSH ist der sicherste Weg, um auf deinen Server zuzugreifen.
    ```
 
 ### System-Updates installieren
-Halte dein System immer aktuell, um Sicherheitslücken zu schließen:
+Halte dein System immer aktuell, um Sicherheitsluecken zu schließen:
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
@@ -49,14 +49,14 @@ sudo apt update && sudo apt upgrade -y
    ```
 
 2. **Automatische Updates aktivieren**:
-   Konfiguriere das System, um automatische Sicherheitsupdates zu ermöglichen:
+   Konfiguriere das System, um automatische Sicherheitsupdates zu ermoeglichen:
    ```bash
    sudo dpkg-reconfigure --priority=low unattended-upgrades
    ```
-   Wähle im Dialog **Yes**, um die Funktion zu aktivieren.
+   Waehle im Dialog **Yes**, um die Funktion zu aktivieren.
 
 3. **Anpassung der Update-Einstellungen (optional)**:
-   Öffne die Datei `/etc/apt/apt.conf.d/50unattended-upgrades`:
+   oeffne die Datei `/etc/apt/apt.conf.d/50unattended-upgrades`:
    ```bash
    sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
    ```
@@ -67,12 +67,12 @@ sudo apt update && sudo apt upgrade -y
    };
    ```
 
-4. **Automatische Ausführung festlegen**:
+4. **Automatische Ausfuehrung festlegen**:
    Passe die Datei `/etc/apt/apt.conf.d/10periodic` an, um das Update-Intervall zu steuern:
    ```bash
    sudo nano /etc/apt/apt.conf.d/10periodic
    ```
-   Füge die folgenden Zeilen hinzu oder ändere die Werte nach Bedarf:
+   Fuege die folgenden Zeilen hinzu oder aendere die Werte nach Bedarf:
    ```
    APT::Periodic::Update-Package-Lists "1";
    APT::Periodic::Download-Upgradeable-Packages "1";
@@ -86,13 +86,13 @@ sudo apt update && sudo apt upgrade -y
    sudo unattended-upgrades --dry-run
    ```
 
-6. **Protokolle überprüfen**:
+6. **Protokolle ueberpruefen**:
    Automatische Updates werden hier protokolliert:
    ```bash
    cat /var/log/unattended-upgrades/unattended-upgrades.log
    ```
 
-Mit dieser Einrichtung bleibt dein System immer auf dem neuesten Stand, was das Risiko von Sicherheitslücken erheblich reduziert.
+Mit dieser Einrichtung bleibt dein System immer auf dem neuesten Stand, was das Risiko von Sicherheitsluecken erheblich reduziert.
 
 ---
 
@@ -110,7 +110,7 @@ Starte den SSH-Dienst neu:
 sudo systemctl restart sshd
 ```
 
-### Benutzer mit eingeschränkten Rechten anlegen
+### Benutzer mit eingeschraenkten Rechten anlegen
 Lege einen Benutzer an:
 ```bash
 sudo adduser user
@@ -125,7 +125,7 @@ sudo usermod -aG sudo user
 1. **UFW installieren und konfigurieren**:
    ```bash
    sudo apt install ufw
-   sudo ufw allow 22/tcp # Um SSH / Port 22 über TCP zu erlauben
+   sudo ufw allow 22/tcp # Um SSH / Port 22 ueber TCP zu erlauben
    sudo ufw enable
    ```
 
@@ -135,7 +135,7 @@ sudo usermod -aG sudo user
    sudo ufw allow 80/tcp   # HTTP | Dienste mit explizitem Port
    ```
 
-3. **Firewall-Status überprüfen**:
+3. **Firewall-Status ueberpruefen**:
    ```bash
    sudo ufw status verbose
    ```
@@ -143,7 +143,7 @@ sudo usermod -aG sudo user
 ## Intrusion Detection und Monitoring
 
 ### Fail2Ban installieren und konfigurieren
-Fail2Ban schützt vor Brute-Force-Angriffen, da nach einer bestimmten Anzahl an eingegebenen Passwörtern, der Nutzer für eine Zeit gesperrt wird.
+Fail2Ban schuetzt vor Brute-Force-Angriffen, da nach einer bestimmten Anzahl an eingegebenen Passwoertern, der Nutzer fuer eine Zeit gesperrt wird.
 
 1. **Installation**:
    ```bash
@@ -155,7 +155,7 @@ Fail2Ban schützt vor Brute-Force-Angriffen, da nach einer bestimmten Anzahl an 
    sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
    sudo nano /etc/fail2ban/jail.local
    ```
-   Stelle sicher, dass SSH geschützt ist:
+   Stelle sicher, dass SSH geschuetzt ist:
    ```
    [sshd]
    enabled = true
@@ -170,7 +170,7 @@ Fail2Ban schützt vor Brute-Force-Angriffen, da nach einer bestimmten Anzahl an 
 ---
 
 ## Automatische Backups einrichten
-Sichere regelmäßig deine Daten.
+Sichere regelmaeßig deine Daten.
 
 1. **rsync-Skript erstellen**:
    ```bash
@@ -181,7 +181,7 @@ Sichere regelmäßig deine Daten.
    ```bash
    crontab -e
    ```
-   Beispiel: Tägliches Backup um 2 Uhr nachts:
+   Beispiel: Taegliches Backup um 2 Uhr nachts:
    ```
    0 2 * * * /pfad/zum/backup-script.sh
    ```
@@ -189,10 +189,10 @@ Sichere regelmäßig deine Daten.
 
 ---
 
-## Zusätzliche Tipps und Tools
+## Zusaetzliche Tipps und Tools
 - **SELinux** oder **AppArmor** aktivieren, um Prozesse zu isolieren.
-- Verwende **knockd**, um versteckte Ports zu schützen, in dem man an andere Ports vorher anklopfen muss
-- Installiere **Lynis**, um Sicherheitschecks auf deinem Server auszuführen:
+- Verwende **knockd**, um versteckte Ports zu schuetzen, in dem man an andere Ports vorher anklopfen muss
+- Installiere **Lynis**, um Sicherheitschecks auf deinem Server auszufuehren:
   ```bash
   sudo apt install lynis
   sudo lynis audit system
@@ -200,4 +200,4 @@ Sichere regelmäßig deine Daten.
 
 ---
 
-Mit diesen Schritten richtest du deinen Linux-Server sicher ein und bist besser vor Angriffen gut geschützt. Denk daran, regelmäßig Updates durchzuführen und dein System zu überwachen!
+Mit diesen Schritten richtest du deinen Linux-Server sicher ein und bist besser vor Angriffen gut geschuetzt. Denk daran, regelmaeßig Updates durchzufuehren und dein System zu ueberwachen!
