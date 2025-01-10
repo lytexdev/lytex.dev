@@ -43,8 +43,7 @@ In vielen Branchen ist 2FA inzwischen ein Muss, um Datenschutz- und Sicherheitss
 
 1. **Einmalpasswörter (One-Time Passwords, OTPs)**
 - Codes, die von einer App wie **Aegis Authenticator** oder **FreeOTP** generiert werden. Sie ändern sich alle 30 Sekunden
-   - Beispiel: 
-     - Nach dem Login mit Benutzername und Passwort wirst du aufgefordert, einen 6-stelligen Code einzugeben, der auf deinem Smartphone angezeigt wird
+   - Beispiel: Nach dem Login mit Benutzername und Passwort wirst du aufgefordert, einen 6-stelligen Code einzugeben, der auf deinem Smartphone angezeigt wird
 
 2. **SMS-basierte 2FA**
 - Ein Code wird per SMS an dein registriertes Mobiltelefon gesendet
@@ -87,23 +86,23 @@ In vielen Branchen ist 2FA inzwischen ein Muss, um Datenschutz- und Sicherheitss
 Wenn du auf freie und quelloffene Software (FOSS) Wert legst, sind hier einige empfohlene Tools:
 
 1. **Aegis Authenticator**
-- Eine Open-Source-Alternative mit starken Funktionen wie verschlüsselten Backups und einer modernen Oberfläche.
+- Eine Open-Source-Alternative mit starken Funktionen wie verschlüsselten Backups und einer modernen Oberfläche
    - [GitHub: Aegis Authenticator](https://github.com/beemdevelopment/Aegis)
    
 2. **FreeOTP**
-- Eine Open-Source-Alternative zu Google Authenticator.
+- Eine Open-Source-Alternative zu Google Authenticator
    - [GitHub: FreeOTP](https://github.com/freeotp/freeotp-android)
 
 3. **andOTP**
-- Ein fortschrittlicher 2FA-Manager mit Backups und verschlüsselten Daten.
+- Ein fortschrittlicher 2FA-Manager mit Backups und verschlüsselten Daten
    - [GitHub: andOTP](https://github.com/andOTP/andOTP)
 
 4. **SoloKey**
-- Open-Source-Hardware-Token, die FIDO2 und U2F unterstützen.
+- Open-Source-Hardware-Token, die FIDO2 und U2F unterstützen
    - [SoloKeys](https://solokeys.com)
 
 5. **KeePassXC**
-- Passwort-Manager mit integrierter Unterstützung für TOTP-Codes.
+- Passwort-Manager mit integrierter Unterstützung für TOTP-Codes
    - [KeePassXC](https://keepassxc.org)
 
 ---
