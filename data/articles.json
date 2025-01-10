@@ -4,5 +4,12 @@
     "title": "Linux Server absichern",
     "filepath": "Security/Linux-Server-Absichern",
     "created_at": "2024-11-07"
+  },
+  {
+    "id": 2,
+    "title": "Warum 2-FA unverzichtbar ist",
+    "filepath": "Security/Basics/2FA",
+    "created_at": "2025-01-10",
+    "authors": "lytex"
   }
 ]
