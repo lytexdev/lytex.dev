@@ -1,7 +1,7 @@
-# lytex
+# lytex.dev
 
 ## Overview
-Personal website built with Flask, featuring blog posts: [lytex.dev](https://lytex.dev).
+Website built with Flask, featuring blog posts: [lytex.dev](https://lytex.dev).
 
 ## Installation
 
