@@ -121,7 +121,7 @@ body {
     margin-bottom: 10px;
 }
 
-.article-card a {
+.article-cards a {
     text-decoration: none;
 }
 
@@ -135,6 +135,20 @@ body {
     margin-top: 50px;
     padding-top: 50px;
     border-top: 2px solid #754141;
+}
+
+.copy-button {
+    transform: translate(21rem, 0.75rem);
+    color: #efefef;
+    background-color: #474747;
+    padding: 0.25rem;
+    border-radius: 8px;
+    border: none;
+}
+
+.copy-button:hover {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    background-color: #292929;
 }
 
 .donations h2 {
@@ -197,4 +211,74 @@ body {
     .donations {
         margin-bottom: 40px;
     }
+
+    .contact {
+        flex-direction: column;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #f53b3b;
+    }
+    50% {
+        box-shadow: 0 0 20px #ff4d4d;
+    }
+    100% {
+        box-shadow: 0 0 5px #f53b3b;
+    }
+}
+
+.header-main {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.service-item a,
+.service-item .tor-version-link {
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.service-item a:hover,
+.service-item .tor-version-link:hover {
+    color: #ff9999;
+    transform: scale(1.1);
+}
+
+.article-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    background-color: #3a3a3a;
+    animation: glow 1.5s infinite;
+}
+
+.donation-item p {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact a {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact a:hover {
+    color: #ff6666;
+    transform: rotate(-3deg);
 }
