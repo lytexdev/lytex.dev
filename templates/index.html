@@ -48,12 +48,12 @@
             <h2>Letzte Blogbeiträge</h2>
             <div class="article-cards">
                 {% for article in articles %}
-                <div class="article-card">
-                    <a href="{{ url_for('show_article', subpath=article.filepath) }}">
+                <a class="article-card" href="{{ url_for('show_article', subpath=article.filepath) }}">
+                    <div>
                         <h3>{{ article.title }}</h3>
                         <p class="article-date">Veröffentlicht: {{ article.created_at }}</p>
-                    </a>
-                </div>
+                    </div>
+                </a>
                 {% endfor %}
             </div>
         </section>
@@ -63,6 +63,7 @@
             <div class="donation-list">
                 <div class="donation-item">
                     <h4 style="color:#ff5e00;">Monero (XMR):</h4>
+                    <button onclick="copyXMRAdress()" class="copy-button">kopieren</button>
                     <p>8B4Voj8bQtf3Fv2fmKbnwMbLemBcwQu9GTxwtR8o9tgnHk9uPfvvMsQ4P4KHD5AgkQ2W4LvE8kY9MGSX7rvGk9xMMtey82y</p>
                 </div>
             </div>
@@ -76,4 +77,12 @@
         </section>
     </div>
 </body>
+<script>
+    function copyXMRAdress() {
+        navigator.clipboard.writeText('8B4Voj8bQtf3Fv2fmKbnwMbLemBcwQu9GTxwtR8o9tgnHk9uPfvvMsQ4P4KHD5AgkQ2W4LvE8kY9MGSX7rvGk9xMMtey82y')
+        
+        let copyButton = document.querySelector('.copy-button')
+        copyButton.textContent = 'kopiert'
+    }
+</script>
 </html>
