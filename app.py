@@ -50,6 +50,44 @@ def show_article(subpath):
         next_article=next_article
     )
 
+@app.route('/sitemap.xml')
+def sitemap():
+    metadata = load_metadata()
+    sitemap_xml = '''<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'''
+    
+    sitemap_xml += f'''
+    <url>
+        <loc>{url_for('index', _external=True)}</loc>
+        <lastmod>{datetime.now().strftime('%Y-%m-%d')}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>'''
+
+    for article in metadata:
+        article_url = url_for('show_article', subpath=article["filepath"], _external=True)
+        lastmod = article.get("created_at", datetime.now().strftime('%Y-%m-%d'))
+        sitemap_xml += f'''
+    <url>
+        <loc>{article_url}</loc>
+        <lastmod>{lastmod}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>'''
+
+    sitemap_xml += "\n</urlset>"
+    return Response(sitemap_xml, mimetype='application/xml')
+
+@app.route('/robots.txt')
+def robots():
+    robots_txt = f'''User-agent: *
+
+Allow: /
+
+Sitemap: {url_for('sitemap', _external=True)}
+'''
+    return Response(robots_txt, mimetype='text/plain')
+
 if __name__ == "__main__":
     try:
         app.run(debug=True, host='0.0.0.0', port=5000)
