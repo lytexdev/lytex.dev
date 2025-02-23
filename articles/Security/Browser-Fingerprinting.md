@@ -56,8 +56,6 @@ Da Browser Fingerprinting schwer zu umgehen ist, gibt es nur wenige effektive Ge
 - **Tor Browser nutzen:** Dieser maskiert dein Fingerprinting, indem alle Nutzer das gleiche Setup haben
 - **Brave mit "Fingerprinting Protection":** Diese Funktion tarnt deinen Fingerprint, um deine Einzigartigkeit zu reduzieren
 - **User-Agent-Switcher:** Wechselt deine Browser-Identifikation zufällig, ist aber nicht 100% sicher
-  
-📌 **Wichtig:** Fingerprinting kann oft nicht komplett blockiert werden – das Ziel ist es, möglichst "unauffällig" zu wirken
 
 ---
 
