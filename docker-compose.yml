@@ -4,7 +4,7 @@ services:
   web:
     build: .
     ports:
-      - "8999:8999"
+      - "5000:5000"
     volumes:
       - ./:/app
     restart: "unless-stopped"

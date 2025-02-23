@@ -1,7 +1,7 @@
 # lytex.dev
 
 ## Overview
-Website built with Flask, featuring blog posts: [lytex.dev](https://lytex.dev).
+My personal blog website [lytex.dev](https://lytex.dev).
 
 ## Installation
 
@@ -14,15 +14,10 @@ git clone https://github.com/lytexdev/lytex.git
 cd lytex
 ```
 
-**Build and run the Docker image**
+**Build and run**
 ```bash
-# with docker-compose-v2
-docker compose up -d
-
-# with docker-compose
 docker-compose up -d
 ```
-By default it runs on port 8999
 
 ## Usage
 
