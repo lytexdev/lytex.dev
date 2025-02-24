@@ -2,16 +2,39 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="lytexdev blog - Themen rund um Privacy, Cybersecurity und Datenschutz. Erfahre mehr über VPNs, 2FA, Linux und mehr.">
+    <meta name="keywords" content="lytex, lytexdev, lytexmedia, Privacy, Cybersecurity, Datenschutz, VPN, 2FA, Linux Sicherheit, Tracking, Passwort-Manager, Browser-Fingerprinting, Tor, I2P">
+    <meta name="author" content="lytexdev">
+    <meta name="robots" content="index, follow">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='lytex.svg') }}" type="image/svg">
+
+    <meta property="og:title" content="{{ title }} - lytexdev Blog">
+    <meta property="og:description" content="Themen rund um Privacy, Cybersecurity und Datenschutz. Erfahre mehr über VPNs, 2FA, Linux und mehr.">
+    <meta property="og:image" content="{{ url_for('static', filename='lytex.svg', _external=True) }}">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="lytexdev Blog - Privacy & Security">
+    <meta name="twitter:description" content="Themen rund um Online-Privatsphäre, Cybersecurity und Datenschutz.">
+    <meta name="twitter:image" content="{{ url_for('static', filename='lytex.svg', _external=True) }}">
+
+    <link rel="canonical" href="{{ request.url }}">
     <meta http-equiv="onion-location" content="http://sad4k54yg2gevlhel3sdtaw2wbreqlkbfsueihjpoxcas2o73ne5kbad.onion">
-    <title>lytexdev blog</title>
+    <title>lytexdev Blog</title>
 
     <style>
         @font-face {
             font-family: 'Ubuntu Sans';
             src: url('{{ url_for("static", filename="fonts/UbuntuSans-VariableFont_wdth,wght.ttf") }}') format('truetype');
+        }
+
+        body {
+            font-family: 'Ubuntu Sans', sans-serif;
         }
     </style>
 </head>
