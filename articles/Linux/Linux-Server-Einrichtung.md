@@ -1,4 +1,4 @@
-# Linux-Server Absichern
+# Linux Server Einrichtung
 
 Ein Linux-Server ist eine leistungsstarke Basis fuer Webanwendungen, Datenbanken, Backups oder andere Dienste. Doch ohne die richtige Konfiguration kann er schnell zum Ziel von Angriffen werden. In diesem Post wird erklaert, wie man einen Linux-Server (in dem Fall Ubuntu) sicher einrichtet.
 

@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, render_template, Response, send_from_directory, abort, url_for
+from collections import defaultdict, OrderedDict
 from markdown2 import markdown
 from datetime import datetime
 import json
@@ -13,10 +14,27 @@ def load_metadata():
     with open(METADATA_PATH, 'r') as f:
         return json.load(f)
 
+
 @app.route('/')
 def index():
     metadata = load_metadata()
-    return render_template('index.html', articles=metadata)
+
+    latest_articles = sorted(metadata, key=lambda x: x["created_at"], reverse=True)[:4]
+    categorized_articles = defaultdict(list)
+    
+    for article in metadata:
+        category = article["filepath"].split("/")[0]
+        categorized_articles[category].append(article)
+
+    ordered_categories = OrderedDict()
+    if "Privacy-Security" in categorized_articles:
+        ordered_categories["Privacy-Security"] = categorized_articles.pop("Privacy-Security")
+
+    for category in sorted(categorized_articles.keys()):
+        ordered_categories[category] = categorized_articles[category]
+
+    return render_template('index.html', articles=latest_articles, categories=ordered_categories)
+
 
 @app.route('/<path:subpath>')
 def show_article(subpath):
@@ -115,6 +133,6 @@ def set_security_headers(response):
 
 if __name__ == "__main__":
     try:
-        app.run(debug=True, host='0.0.0.0', port=5000)
+        app.run(host='0.0.0.0', port=5000, debug=False)
     except Exception as e:
         app.logger.error(f"An error occurred: {e}")

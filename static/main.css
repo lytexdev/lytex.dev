@@ -38,17 +38,6 @@ body {
     margin-top: 10px;
 }
 
-.public-services {
-    text-align: center;
-    margin-bottom: 7rem;
-}
-
-.public-services h2 {
-    font-size: 2em;
-    color: #fa3131;
-    margin-bottom: 20px;
-}
-
 .service-list {
     display: flex;
     flex-wrap: wrap;
@@ -89,7 +78,7 @@ body {
     border-top: 2px solid #971e1e;
 }
 
-.article-list h2 {
+h2 {
     font-size: 2em;
     color: #fa3131;
     margin-bottom: 20px;
@@ -173,10 +162,6 @@ body {
     text-align: center;
 }
 
-.donation-item h4 {
-    margin-bottom: 10px;
-}
-
 .donation-item p {
     color: #e0e0e0;
     font-family: monospace;
@@ -214,6 +199,10 @@ body {
 
     .contact {
         flex-direction: column;
+    }
+
+    .copy-button {
+        transform: unset;
     }
 }
 
@@ -281,4 +270,44 @@ body {
 .contact a:hover {
     color: #ff6666;
     transform: rotate(-3deg);
+}
+
+
+
+
+.categorized-articles {
+    margin-top: 40px;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category h3 {
+    font-size: 20px;
+    color: #fff;
+    background-color: #2e2e2e;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.category li {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #181818;
+}
+
+.category a {
+    text-decoration: none;
+    color: #fc4d4d;
+}
+
+.category a:hover {
+    text-decoration: underline;
 }

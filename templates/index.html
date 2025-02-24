@@ -45,24 +45,8 @@
             <b>We love privacy ;)</b>
         </header>
         
-        <section class="public-services">
-            <div class="service-list">
-                <div class="service-item">
-                    <a href="https://lytex.dev" target="_blank">lytex.dev</a> -
-                    <a class="tor-version-link" href="http://sad4k54yg2gevlhel3sdtaw2wbreqlkbfsueihjpoxcas2o73ne5kbad.onion"
-                        target="_blank">Onion Link</a>
-                </div>
-                <div class="service-item">
-                    <a href="https://git.lytex.dev" target="_blank">git.lytex.dev</a> -
-                    <a class="tor-version-link" href="http://nvg5ceqis2jt5zozfpoe543xth6t42of64lvbyon6ceskn6ky5ovs3ad.onion"
-                        target="_blank">Onion Link</a>
-                    <p>(Git Repositories)</p>
-                </div>
-            </div>
-        </section>
-        
         <section class="article-list">
-            <h2>Letzte Blogbeiträge</h2>
+            <h2>Letzte Blogbeiträge</h2>
             <div class="article-cards">
                 {% for article in articles %}
                 <a class="article-card" href="{{ url_for('show_article', subpath=article.filepath) }}">
@@ -73,6 +57,23 @@
                 </a>
                 {% endfor %}
             </div>
+        </section>
+
+        <section class="categorized-articles">
+            <h2>Artikel nach Kategorie</h2>
+            {% for category, articles in categories.items() %}
+            <div class="category">
+                <h3>{{ category }}</h3>
+                <ul>
+                    {% for article in articles %}
+                    <li>
+                        <a href="{{ url_for('show_article', subpath=article.filepath) }}">{{ article.title }}</a>
+                        <span class="article-date">({{ article.created_at }})</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
         </section>
         
         <section class="donations">
