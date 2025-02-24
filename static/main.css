@@ -92,7 +92,7 @@ h2 {
 
 .article-card {
     background-color: #181818;
-    padding: 20px;
+    padding: 8px;
     border-radius: 8px;
     text-align: center;
     transition: transform 0.2s ease, background-color 0.2s ease;
@@ -117,6 +117,43 @@ h2 {
 .article-date {
     font-size: 0.9em;
     color: #b3b3b3;
+}
+
+.categorized-articles {
+    margin-top: 40px;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category h3 {
+    font-size: 20px;
+    color: #fff;
+    background-color: #2e2e2e;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.category li {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #181818;
+}
+
+.category a {
+    text-decoration: none;
+    color: #fc4d4d;
+}
+
+.category a:hover {
+    text-decoration: underline;
 }
 
 .donations {
@@ -270,44 +307,4 @@ h2 {
 .contact a:hover {
     color: #ff6666;
     transform: rotate(-3deg);
-}
-
-
-
-
-.categorized-articles {
-    margin-top: 40px;
-}
-
-.category {
-    margin-bottom: 20px;
-}
-
-.category h3 {
-    font-size: 20px;
-    color: #fff;
-    background-color: #2e2e2e;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.category ul {
-    list-style: none;
-    padding: 0;
-}
-
-.category li {
-    margin: 5px 0;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #181818;
-}
-
-.category a {
-    text-decoration: none;
-    color: #fc4d4d;
-}
-
-.category a:hover {
-    text-decoration: underline;
 }
