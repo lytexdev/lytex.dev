@@ -70,7 +70,7 @@ def main():
         title = sys.argv[2]
         article_path = sys.argv[3]
         markdown_path = sys.argv[4]
-        authors = sys.argv[5] if len(sys.argv) > 5 else "lytex"
+        authors = sys.argv[5] if len(sys.argv) > 5 else "lytexdev"
         
         if not os.path.exists(markdown_path):
             print(f"Error: Markdown file '{markdown_path}' not found.")
