@@ -35,9 +35,8 @@ body {
 }
 
 .article-head b {
-    font-size: 2em;
-    color: #ff4d4d;
-    text-shadow: 0 0 10px #f53b3b;
+    font-size: 2.2em;
+    color: #fc3838;
 }
 
 .article-head time {
@@ -61,7 +60,6 @@ body {
     font-size: 1.8em;
     color: #ff4d4d;
     margin-top: 20px;
-    text-shadow: 0 0 5px #f53b3b;
 }
 
 .article-content p {
@@ -82,6 +80,14 @@ pre {
 code {
     font-family: 'Courier New', monospace;
     color: #ff6666;
+}
+
+a {
+    color: #ff6666;
+}
+
+hr {
+    margin: 1.5rem 0;
 }
 
 @media (max-width: 768px) {
