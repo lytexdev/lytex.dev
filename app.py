@@ -93,6 +93,26 @@ Sitemap: {url_for('sitemap', _external=True)}
 def page_not_found(error):
     return render_template('404.html'), 404
 
+@app.after_request
+def set_security_headers(response):
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; "
+        "script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data:; "
+        "font-src 'self'; "
+        "connect-src 'self'; "
+        "frame-ancestors 'none';"
+    )
+    response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    response.headers["Permissions-Policy"] = ("geolocation=(), microphone=(), camera=(), payment=(), usb=()")
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    return response
+
+
 if __name__ == "__main__":
     try:
         app.run(debug=True, host='0.0.0.0', port=5000)
