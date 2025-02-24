@@ -36,7 +36,7 @@ def show_article(subpath):
         content = f.read()
         html_content = markdown(content, extras=['fenced-code-blocks'])
         
-    authors = article.get('authors', 'lytex')
+    authors = article.get('authors', 'lytexdev')
 
     prev_article = metadata[article_index - 1] if article_index > 0 else None
     next_article = metadata[article_index + 1] if article_index < len(metadata) - 1 else None
@@ -88,6 +88,10 @@ Allow: /
 Sitemap: {url_for('sitemap', _external=True)}
 '''
     return Response(robots_txt, mimetype='text/plain')
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
 
 if __name__ == "__main__":
     try:

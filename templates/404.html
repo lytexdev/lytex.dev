@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lytexdev Blog | Seite nicht gefunden</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='lytex.svg') }}" type="image/svg">
+    <meta name="robots" content="noindex">
+
+    <style>
+        .error-content {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .error-content p {
+            font-size: 18px;
+            color: #aaa;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #444;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header-main">
+            <h1>404 - Seite nicht gefunden</h1>
+        </header>
+
+        <section class="error-content">
+            <p>Die angeforderte Seite existiert nicht...</p>
+            <a href="{{ url_for('index') }}" class="button">Zurück zur Startseite</a>
+        </section>
+    </div>
+</body>
+</html>
