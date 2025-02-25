@@ -26,5 +26,12 @@
     "filepath": "Privacy-Security/Browser-Fingerprinting",
     "created_at": "2025-02-23",
     "authors": "lytexdev"
+  },
+  {
+    "id": 5,
+    "title": "Metadaten: Unsichtbare Spuren im digitalen Leben",
+    "filepath": "Privacy-Security/Metadaten",
+    "created_at": "2025-02-25",
+    "authors": "lytexdev"
   }
 ]
