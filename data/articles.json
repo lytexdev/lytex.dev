@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Linux Server Einrichtung",
-    "filepath": "Linux/Linux-Server-Einrichtung",
+    "filepath": "Open-Source/Linux/Linux-Server-Einrichtung",
     "created_at": "2024-11-07",
     "authors": "lytexdev"
   },
@@ -32,6 +32,13 @@
     "title": "Metadaten: Unsichtbare Spuren im digitalen Leben",
     "filepath": "Privacy-Security/Metadaten",
     "created_at": "2025-02-25",
+    "authors": "lytexdev"
+  },
+  {
+    "id": 6,
+    "title": "Open Source vs. Closed Source: Welche App schützt deine Daten wirklich?",
+    "filepath": "Open-Source/Open-Source-vs-Closed-Source",
+    "created_at": "2025-03-11",
     "authors": "lytexdev"
   }
 ]
