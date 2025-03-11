@@ -103,3 +103,51 @@ hr {
         padding: 8px 12px;
     }
 }
+
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #1e1e1e;
+    color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+thead {
+    background: linear-gradient(135deg, #444, #333);
+}
+
+th {
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #666;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease-in-out;
+}
+
+@media (max-width: 600px) {
+    table {
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+}
