@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='article.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='default.min.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='lytex.svg') }}" type="image/svg">
 
     <meta property="og:title" content="{{ title }} - lytexdev Blog">
@@ -38,6 +37,8 @@
         body {
             font-family: 'Ubuntu Sans', sans-serif;
         }
+        
+        {{ pygments_css|safe }}
     </style>
 </head>
 <body>
@@ -61,8 +62,30 @@
         <span class="article-authors">von {{ authors }}</span>
     </section>
 
-    <section class="article-content">
+    <section class="article-content markdown-body">
         {{ content|safe }}
     </section>
+    
+    <footer class="article-footer">
+        <div class="article-nav">
+            {% if prev_article %}
+            <a href="{{ url_for('show_article', subpath=prev_article.filepath) }}" class="button prev-article">
+                ← {{ prev_article.title }}
+            </a>
+            {% endif %}
+            
+            {% if next_article %}
+            <a href="{{ url_for('show_article', subpath=next_article.filepath) }}" class="button next-article">
+                {{ next_article.title }} →
+            </a>
+            {% endif %}
+        </div>
+        
+        <div class="back-to-top">
+            <a href="#" class="button">↑</a>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='article-enhancements.js') }}"></script>
 </body>
 </html>

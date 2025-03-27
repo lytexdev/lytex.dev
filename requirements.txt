@@ -1,3 +1,4 @@
 flask
-markdown2
+markdown
+pygments
 gunicorn

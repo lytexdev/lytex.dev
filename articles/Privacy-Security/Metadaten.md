@@ -24,7 +24,6 @@ Metadaten ermöglichen es, **Personen und ihr Verhalten zu analysieren**, selbst
 - GPS-Daten in Bildern verraten, wo du dich wann aufgehalten hast  
 - Mail-Header geben preis, über welche Server eine Nachricht geleitet wurde  
 
-<br>
 Digitale Metadaten können für viele Zwecke genutzt werden, darunter Werbung, gezielte Analysen und Sicherheitsüberwachung.  
 
 ---
@@ -36,7 +35,6 @@ Viele Tracking-Techniken basieren nicht nur auf Cookies oder Fingerprinting, son
 - **PDFs und Word-Dokumente** speichern den Autor, Bearbeitungsverläufe und die verwendete Software  
 - **IP-Adressen und Browser-Header** geben Aufschluss über den verwendeten Anbieter, Standort und Gerätetyp  
 
-<br>
 Sobald du eine Datei oder Nachricht weiterleitest, können diese Metadaten unbemerkt mitgesendet werden.  
 
 ---
@@ -83,7 +81,6 @@ Um Metadaten in der digitalen Kommunikation zu minimieren, gibt es einige bewäh
 - **Matrix & XMPP:** Open-Source-Messenger mit weniger Metadaten  
 - **Signal:** Verschlüsselte Kommunikation mit minimaler Metadaten-Sammlung: eine sehr gute Alternative zu WhatsApp
 
-<br>
 Je nach Bedrohungsmodell kann es sinnvoll sein, Metadaten bewusst zu reduzieren.  
 
 ---
@@ -103,12 +100,10 @@ Viele Metadaten können nicht direkt im Dateimanager eingesehen werden, daher si
 
 Metadaten werden oft unterschätzt, obwohl sie detaillierte Einblicke in das Verhalten von Personen ermöglichen. Während klassische Verschlüsselung die Inhalte schützt, bleiben Metadaten oft bestehen.
 
-✅ **Dateien vor dem Teilen auf versteckte Metadaten prüfen**  
-✅ **Tracking durch Metadaten minimieren (z. B. EXIF-Daten entfernen)**  
-✅ **Sichere Kommunikationstools nutzen, um Metadaten-Leaks zu verhindern**  
+- ✅ **Dateien vor dem Teilen auf versteckte Metadaten prüfen**  
+- ✅ **Tracking durch Metadaten minimieren (z. B. EXIF-Daten entfernen)**  
+- ✅ **Sichere Kommunikationstools nutzen, um Metadaten-Leaks zu verhindern**  
 
 Ob in Bildern, Dokumenten oder Netzwerken – Metadaten sind immer da. Besonders auf **sozialen Netzwerken wie Instagram & Facebook** werden Metadaten genutzt, um Nutzerprofile zu erstellen.  
 
 Der bewusste Umgang damit ist entscheidend für den Schutz der Privatsphäre.
-
----

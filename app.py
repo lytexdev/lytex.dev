@@ -1,6 +1,12 @@
-from flask import Flask, jsonify, render_template, Response, send_from_directory, abort, url_for
+from flask import Flask, render_template, Response, abort, url_for
 from collections import defaultdict, OrderedDict
-from markdown2 import markdown
+from markdown import markdown
+import markdown.extensions.codehilite
+import markdown.extensions.fenced_code
+import markdown.extensions.tables
+import markdown.extensions.toc
+import markdown.extensions.admonition
+from pygments.formatters import HtmlFormatter
 from datetime import datetime
 import json
 import os
@@ -52,12 +58,23 @@ def show_article(subpath):
 
     with open(md_path, 'r') as f:
         content = f.read()
-        html_content = markdown(content, extras=['fenced-code-blocks'])
+
+        html_content = markdown.markdown(content, extensions=[
+            'markdown.extensions.codehilite',
+            'markdown.extensions.fenced_code',
+            'markdown.extensions.tables', 
+            'markdown.extensions.toc',
+            'markdown.extensions.admonition',
+            'markdown.extensions.nl2br',
+            'markdown.extensions.sane_lists'
+        ])
         
     authors = article.get('authors', 'lytexdev')
 
     prev_article = metadata[article_index - 1] if article_index > 0 else None
     next_article = metadata[article_index + 1] if article_index < len(metadata) - 1 else None
+    
+    pygments_css = HtmlFormatter(style='monokai').get_style_defs('.codehilite')
     
     return render_template(
         'article.html',
@@ -66,7 +83,8 @@ def show_article(subpath):
         created_at=article['created_at'],
         authors=authors,
         prev_article=prev_article,
-        next_article=next_article
+        next_article=next_article,
+        pygments_css=pygments_css
     )
 
 @app.route('/sitemap.xml')

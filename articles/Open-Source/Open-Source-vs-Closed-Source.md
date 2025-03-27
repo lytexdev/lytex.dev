@@ -144,10 +144,10 @@ Mehr Alternativen findest du hier: [awesome-privacy.xyz/](https://awesome-privac
 
 ## Fazit: Open Source als bessere Wahl für Datenschutz
 
-✅ **Mehr Transparenz:** Jeder kann den Code prüfen und Schwachstellen finden  
-✅ **Bessere Sicherheit:** Sicherheitslücken werden schneller entdeckt & geschlossen  
-✅ **Weniger Tracking:** Keine versteckten Telemetrie-Daten oder Zwangsüberwachung  
-✅ **Community-gesteuerte Entwicklung:** Abhängig von den Nutzern, nicht von Firmeninteressen  
+- ✅ **Mehr Transparenz:** Jeder kann den Code prüfen und Schwachstellen finden  
+- ✅ **Bessere Sicherheit:** Sicherheitslücken werden schneller entdeckt & geschlossen  
+- ✅ **Weniger Tracking:** Keine versteckten Telemetrie-Daten oder Zwangsüberwachung  
+- ✅ **Community-gesteuerte Entwicklung:** Abhängig von den Nutzern, nicht von Firmeninteressen  
 
 Closed-Source-Software kann ihre Vorteile haben, aber im Bereich **Datenschutz & Sicherheit** ist Open Source in den meisten Fällen die bessere Wahl.
 

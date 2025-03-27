@@ -72,9 +72,9 @@ Neben Browser-Einstellungen helfen spezialisierte Erweiterungen, Tracking zu red
 
 Kein Schutz ist zu 100% sicher, aber du kannst es Werbetreibenden und Trackern schwer machen:  
 
-✅ **Cookies & Tracker blockieren**  
-✅ **Fingerprinting minimieren**  
-✅ **Datenschutzfreundliche Browser nutzen**  
-✅ **Skript-Blocker & Privacy-Tools einsetzen**  
+- ✅ **Cookies & Tracker blockieren**  
+- ✅ **Fingerprinting minimieren**  
+- ✅ **Datenschutzfreundliche Browser nutzen**  
+- ✅ **Skript-Blocker & Privacy-Tools einsetzen**  
 
 Wenn du ernsthaft Wert auf deine Privatsphäre legst, solltest du einen **datenbewussten Browser nutzen, Tracker blockieren und dein Fingerprinting-Setup anonymisieren**.  
