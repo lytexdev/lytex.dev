@@ -1,4 +1,6 @@
 from flask import Flask, render_template, Response, abort, url_for
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from collections import defaultdict, OrderedDict
 from markdown import markdown
 import markdown.extensions.codehilite
@@ -11,7 +13,18 @@ from datetime import datetime
 import json
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
+app.config.update(
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE='Lax'
+)
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["200 per day", "50 per hour"],
+    storage_uri="memory://"
+)
 
 ARTICLES_PATH = './articles'
 METADATA_PATH = './data/articles.json'
@@ -88,6 +101,7 @@ def show_article(subpath):
     )
 
 @app.route('/sitemap.xml')
+@limiter.limit("20 per minute")
 def sitemap():
     metadata = load_metadata()
     sitemap_xml = '''<?xml version="1.0" encoding="UTF-8"?>
@@ -116,6 +130,7 @@ def sitemap():
     return Response(sitemap_xml, mimetype='application/xml')
 
 @app.route('/robots.txt')
+@limiter.limit("20 per minute")
 def robots():
     robots_txt = f'''User-agent: *
 
@@ -126,8 +141,14 @@ Sitemap: {url_for('sitemap', _external=True)}
     return Response(robots_txt, mimetype='text/plain')
 
 @app.errorhandler(404)
+@limiter.limit("20 per minute")
 def page_not_found(error):
     return render_template('404.html'), 404
+
+@app.errorhandler(500)
+@limiter.limit("20 per minute")
+def page_internal_server(error):
+    return render_template('500.html'), 500
 
 @app.after_request
 def set_security_headers(response):
