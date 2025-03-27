@@ -185,7 +185,7 @@ Sichere regelmaeßig deine Daten.
    ```
    0 2 * * * /pfad/zum/backup-script.sh
    ```
-3. **Unser remote backup script**: [Gitea Repository](https://git.lytex.dev/lytex/remote-backup)
+3. **Unser remote backup script**: [Github Repository](https://github.com/lytexdev/remote-backup)
 
 ---
 
