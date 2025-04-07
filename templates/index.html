@@ -42,7 +42,6 @@
     <div class="container">
         <header class="header-main">
             <h1>lytexdev</h1>
-            <b>We love privacy ;)</b>
         </header>
 
         <section class="quote">
@@ -57,29 +56,49 @@
             <h2>Letzte Blogbeiträge</h2>
             <div class="article-cards">
                 {% for article in articles %}
-                <a class="article-card" href="{{ url_for('show_article', subpath=article.filepath) }}">
-                    <div>
-                        <h3>{{ article.title }}</h3>
-                        <p class="article-date">Veröffentlicht: {{ article.created_at }}</p>
-                    </div>
-                </a>
+                <div class="article-item">
+                    <a href="{{ url_for('show_article', subpath=article.filepath) }}" class="article-link">
+                        <h4>{{ article.title }}</h4>
+                        <span class="article-date">{{ article.created_at }}</span>
+                        <span class="article-author">von {{ article.authors|default('lytexdev') }}</span>
+                    </a>
+                </div>
                 {% endfor %}
             </div>
         </section>
-
+        
         <section class="categorized-articles">
             <h2>Artikel nach Kategorie</h2>
-            {% for category, articles in categories.items() %}
+            {% for category_name, subcategories in categories.items() %}
             <div class="category">
-                <h3>{{ category }}</h3>
-                <ul>
-                    {% for article in articles %}
+                <h3 class="category-title">{{ category_name }}</h3>
+
+                {% if subcategories._root|length > 0 %}
+                <ul class="category-list">
+                    {% for article in subcategories._root %}
                     <li>
                         <a href="{{ url_for('show_article', subpath=article.filepath) }}">{{ article.title }}</a>
                         <span class="article-date">({{ article.created_at }})</span>
                     </li>
                     {% endfor %}
                 </ul>
+                {% endif %}
+        
+                {% for subcategory_name, articles in subcategories.items() %}
+                {% if subcategory_name != '_root' %}
+                <div class="subcategory">
+                    <h4 class="subcategory-title">{{ subcategory_name }}</h4>
+                    <ul class="subcategory-list">
+                        {% for article in articles %}
+                        <li>
+                            <a href="{{ url_for('show_article', subpath=article.filepath) }}">{{ article.title }}</a>
+                            <span class="article-date">({{ article.created_at }})</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
             {% endfor %}
         </section>

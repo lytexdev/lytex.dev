@@ -244,6 +244,51 @@ blockquote p:last-child {
     }
 }
 
+.breadcrumbs {
+    background-color: #181818;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.breadcrumb-link {
+    color: #ff6666;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.breadcrumb-link:hover {
+    color: #ff9999;
+    transform: translateX(2px);
+}
+
+.breadcrumb-current {
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+.breadcrumb-separator {
+    margin: 0 8px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .breadcrumbs {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .breadcrumb-separator {
+        margin: 0 5px;
+    }
+}
+
 .markdown-body > * {
     animation: fadeInUp 0.5s ease-out forwards;
 }

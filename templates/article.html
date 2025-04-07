@@ -26,7 +26,7 @@
     
     <link rel="canonical" href="{{ request.url }}">
     <meta http-equiv="onion-location" content="http://sad4k54yg2gevlhel3sdtaw2wbreqlkbfsueihjpoxcas2o73ne5kbad.onion">
-    <title>lytexdev Blog - {{ title }}</title>
+    <title>{{ title }} - lytexdev Blog</title>
 
     <style>
         @font-face {
@@ -46,14 +46,15 @@
         <h1>lytexdev Blog</h1>
     </header>
     
-    <nav class="navigation-buttons">
-        <a href="{{ url_for('index') }}" class="button">Start</a>
-        {% if prev_article %}
-        <a href="{{ url_for('show_article', subpath=prev_article.filepath) }}" class="button">Letzer Artikel</a>
+    <nav class="breadcrumbs">
+        {% for crumb in breadcrumbs %}
+        {% if loop.last %}
+        <span class="breadcrumb-current">{{ crumb.name }}</span>
+        {% else %}
+        <a href="{{ crumb.url }}" class="breadcrumb-link">{{ crumb.name }}</a>
+        <span class="breadcrumb-separator">›</span>
         {% endif %}
-        {% if next_article %}
-        <a href="{{ url_for('show_article', subpath=next_article.filepath) }}" class="button">Nächster Artikel</a>
-        {% endif %}
+        {% endfor %}
     </nav>
 
     <section class="article-head">

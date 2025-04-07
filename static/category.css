@@ -1,0 +1,232 @@
+body {
+    background: #121212;
+    color: #e0e0e0;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.header-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-main h1 {
+    font-size: 36px;
+    color: #ff1b1b;
+}
+
+.navigation-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button {
+    padding: 10px 15px;
+    background-color: #ff4d4d;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #d41717;
+}
+
+.breadcrumbs {
+    background-color: #181818;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.breadcrumb-link {
+    color: #ff6666;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.breadcrumb-link:hover {
+    color: #ff9999;
+    transform: translateX(2px);
+}
+
+.breadcrumb-current {
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+.breadcrumb-separator {
+    margin: 0 8px;
+    color: #666;
+}
+
+.category-head {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ff4d4d;
+}
+
+.category-head h2 {
+    font-size: 2.2em;
+    color: #fc3838;
+    margin: 0;
+}
+
+.category-content {
+    animation: fadeIn 0.5s ease;
+}
+
+.articles-section,
+.subcategories-section {
+    margin-bottom: 40px;
+}
+
+.articles-section h3,
+.subcategories-section h3 {
+    font-size: 1.6em;
+    color: #ff6666;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.article-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.article-item {
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.article-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.article-link {
+    display: block;
+    padding: 15px;
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+}
+
+.article-link h4 {
+    font-size: 1.2em;
+    color: #ff8888;
+    margin: 0 0 10px 0;
+}
+
+.article-date {
+    display: block;
+    font-size: 0.8em;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.article-author {
+    display: block;
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+.subcategory-block {
+    margin-bottom: 25px;
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.subcategory-title {
+    font-size: 1.3em;
+    margin: 0 0 15px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #333;
+}
+
+.subcategory-title a {
+    color: #ff7777;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.subcategory-title a:hover {
+    color: #ffaaaa;
+}
+
+.subcategory-articles {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.subcategory-articles li {
+    margin: 8px 0;
+    padding: 8px;
+    background-color: #222;
+    border-radius: 4px;
+    border-left: 3px solid #ff4d4d;
+}
+
+.subcategory-articles a {
+    color: #eee;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.subcategory-articles a:hover {
+    color: #ff6666;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .article-list {
+        grid-template-columns: 1fr;
+    }
+
+    .navigation-buttons {
+        flex-wrap: wrap;
+    }
+
+    .button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .category-head h2 {
+        font-size: 1.8em;
+    }
+}

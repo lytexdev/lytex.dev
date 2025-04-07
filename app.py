@@ -33,27 +33,37 @@ def load_metadata():
     with open(METADATA_PATH, 'r') as f:
         return json.load(f)
 
-
 @app.route('/')
 def index():
     metadata = load_metadata()
 
-    latest_articles = sorted(metadata, key=lambda x: x["created_at"], reverse=True)[:4]
-    categorized_articles = defaultdict(list)
+    latest_articles = sorted(metadata, key=lambda x: x["created_at"], reverse=True)[:3]
+    categorized_articles = defaultdict(lambda: defaultdict(list))
     
     for article in metadata:
-        category = article["filepath"].split("/")[0]
-        categorized_articles[category].append(article)
-
+        filepath_parts = article["filepath"].split("/")
+        
+        if len(filepath_parts) == 1:
+            categorized_articles["Andere"]["_root"].append(article)
+        elif len(filepath_parts) == 2:
+            category = filepath_parts[0]
+            categorized_articles[category]["_root"].append(article)
+        else:
+            category = filepath_parts[0]
+            subcategory = filepath_parts[1]
+            categorized_articles[category][subcategory].append(article)
+    
     ordered_categories = OrderedDict()
+    
     if "Privacy-Security" in categorized_articles:
         ordered_categories["Privacy-Security"] = categorized_articles.pop("Privacy-Security")
 
     for category in sorted(categorized_articles.keys()):
         ordered_categories[category] = categorized_articles[category]
 
-    return render_template('index.html', articles=latest_articles, categories=ordered_categories)
-
+    return render_template('index.html', 
+                           articles=latest_articles, 
+                           categories=ordered_categories)
 
 @app.route('/<path:subpath>')
 def show_article(subpath):
@@ -86,6 +96,24 @@ def show_article(subpath):
 
     prev_article = metadata[article_index - 1] if article_index > 0 else None
     next_article = metadata[article_index + 1] if article_index < len(metadata) - 1 else None
+
+    breadcrumbs = []
+    filepath_parts = article["filepath"].split("/")
+
+    breadcrumbs.append({"name": "Home", "url": url_for('index')})
+
+    if len(filepath_parts) > 1:
+        category = filepath_parts[0]
+        breadcrumbs.append({"name": category, "url": url_for('show_category', category=category)})
+
+        if len(filepath_parts) > 2:
+            subcategory = filepath_parts[1]
+            breadcrumbs.append({
+                "name": subcategory, 
+                "url": url_for('show_subcategory', category=category, subcategory=subcategory)
+            })
+
+    breadcrumbs.append({"name": article["title"], "url": None})
     
     pygments_css = HtmlFormatter(style='monokai').get_style_defs('.codehilite')
     
@@ -97,8 +125,63 @@ def show_article(subpath):
         authors=authors,
         prev_article=prev_article,
         next_article=next_article,
-        pygments_css=pygments_css
+        pygments_css=pygments_css,
+        breadcrumbs=breadcrumbs
     )
+
+@app.route('/category/<category>')
+def show_category(category):
+    metadata = load_metadata()
+    category_articles = [article for article in metadata if article["filepath"].split('/')[0] == category]
+    
+    if not category_articles:
+        return abort(404)
+    
+    category_articles = sorted(category_articles, key=lambda x: x["created_at"], reverse=True)
+    
+    subcategories = defaultdict(list)
+    root_articles = []
+    
+    for article in category_articles:
+        path_parts = article["filepath"].split('/')
+        
+        if len(path_parts) == 2:
+            root_articles.append(article)
+        else:
+            subcategory = path_parts[1]
+            subcategories[subcategory].append(article)
+
+    ordered_subcategories = OrderedDict()
+    for subcategory in sorted(subcategories.keys()):
+        ordered_subcategories[subcategory] = sorted(subcategories[subcategory], 
+                                                   key=lambda x: x["created_at"], 
+                                                   reverse=True)
+    
+    return render_template('category.html',
+                          category=category,
+                          root_articles=root_articles,
+                          subcategories=ordered_subcategories)
+
+@app.route('/category/<category>/<subcategory>')
+def show_subcategory(category, subcategory):
+    metadata = load_metadata()
+    
+    subcategory_articles = [
+        article for article in metadata 
+        if article["filepath"].split('/')[0] == category 
+        and len(article["filepath"].split('/')) > 2
+        and article["filepath"].split('/')[1] == subcategory
+    ]
+    
+    if not subcategory_articles:
+        return abort(404)
+    
+    subcategory_articles = sorted(subcategory_articles, key=lambda x: x["created_at"], reverse=True)
+    
+    return render_template('subcategory.html',
+                          category=category,
+                          subcategory=subcategory,
+                          articles=subcategory_articles)
 
 @app.route('/sitemap.xml')
 @limiter.limit("20 per minute")
@@ -113,6 +196,38 @@ def sitemap():
         <lastmod>{datetime.now().strftime('%Y-%m-%d')}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+    </url>'''
+
+    categories = set()
+    subcategories = defaultdict(set)
+    
+    for article in metadata:
+        parts = article["filepath"].split("/")
+        if len(parts) > 0:
+            category = parts[0]
+            categories.add(category)
+            
+            if len(parts) > 1:
+                subcategory = parts[1]
+                subcategories[category].add(subcategory)
+    
+    for category in categories:
+        sitemap_xml += f'''
+    <url>
+        <loc>{url_for('show_category', category=category, _external=True)}</loc>
+        <lastmod>{datetime.now().strftime('%Y-%m-%d')}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>'''
+
+    for category, subs in subcategories.items():
+        for subcategory in subs:
+            sitemap_xml += f'''
+    <url>
+        <loc>{url_for('show_subcategory', category=category, subcategory=subcategory, _external=True)}</loc>
+        <lastmod>{datetime.now().strftime('%Y-%m-%d')}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
     </url>'''
 
     for article in metadata:
