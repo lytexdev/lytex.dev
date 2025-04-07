@@ -112,12 +112,7 @@ Allerdings bedeutet **Closed Source nicht automatisch bessere Sicherheit** – n
         <tr>
             <td>Suchmaschine</td>
             <td>Google, Bing</td>
-            <td>SearXNG</td>
-        </tr>
-        <tr>
-            <td>VPN-Provider</td>
-            <td>NordVPN, ExpressVPN</td>
-            <td>MullvadVPN</td>
+            <td>SearXNG, DuckDuckGo</td>
         </tr>
         <tr>
             <td>VPN-Provider</td>

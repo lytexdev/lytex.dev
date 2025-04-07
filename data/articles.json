@@ -16,21 +16,21 @@
   {
     "id": 3,
     "title": "VPN: Falsche Versprechen f\u00fcr Privatsph\u00e4re?",
-    "filepath": "Privacy-Security/VPN",
+    "filepath": "Privacy-Security/Anonymität/VPN",
     "created_at": "2025-02-12",
     "authors": "lytexdev"
   },
   {
     "id": 4,
     "title": "Wie Webseiten dich tracken – und wie du dich wehren kannst",
-    "filepath": "Privacy-Security/Browser-Fingerprinting",
+    "filepath": "Privacy-Security/Anonymität/Browser-Fingerprinting",
     "created_at": "2025-02-23",
     "authors": "lytexdev"
   },
   {
     "id": 5,
     "title": "Metadaten: Unsichtbare Spuren im digitalen Leben",
-    "filepath": "Privacy-Security/Metadaten",
+    "filepath": "Privacy-Security/Anonymität/Metadaten",
     "created_at": "2025-02-25",
     "authors": "lytexdev"
   },
