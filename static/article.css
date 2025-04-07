@@ -259,6 +259,10 @@ blockquote p:last-child {
     line-height: 1.6;
 }
 
+.markdown-body hr {
+    margin-top: 1.5rem;
+}
+
 .markdown-body img {
     max-width: 100%;
     height: auto;

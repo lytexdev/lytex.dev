@@ -40,5 +40,12 @@
     "filepath": "Open-Source/Open-Source-vs-Closed-Source",
     "created_at": "2025-03-11",
     "authors": "lytexdev"
+  },
+  {
+    "id": 7,
+    "title": "ISP-Überwachung: Wie viel dein Internetanbieter über dich weiß",
+    "filepath": "Privacy-Security/Anonymität/ISP-Provider",
+    "created_at": "2025-04-03",
+    "authors": "lytexdev"
   }
 ]
